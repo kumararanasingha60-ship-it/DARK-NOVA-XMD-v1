@@ -27,7 +27,7 @@
     "mongoose": "^8.17.1",
     "fb-downloader-scrapper": "^3.0.1",
     "canvas": "^3.1.2",
-    "@vreden/youtube_scraper": "^1.2.7"
-    "wa-sticker-formatter": "^4.4.4"
+    "@vreden/youtube_scraper": "^1.2.7",
+    "wa-sticker-formatter": "^4.4.4",
   }
 }
