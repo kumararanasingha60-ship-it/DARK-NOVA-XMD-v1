@@ -13,4 +13,7 @@ module.exports = {
   ALIVE_MSG: process.env.ALIVE_MSG || "Iam Alive Now!! ᴅᴀʀᴋ ɴᴏᴠᴀ xᴍᴅ 🤭💗 ආහ් පැටියෝ කොහොමද ?🌝!\n\n🥶ＭＡＤＥ ＢＹ ＡＬＰＨＡ Ｘ ＴＥＡＭ🥶",
   AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "true",
   MODE: process.env.MODE || "public",
+  AUTO_VOICE: process.env.AUTO_VOICE || "true",
+  AUTO_STICKER: process.env.AUTO_STICKER || "true"
+  AUTO_REPLY: process.env.AUTO_REPLY || "true"
 };
