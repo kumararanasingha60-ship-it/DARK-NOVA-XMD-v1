@@ -1,12 +1,12 @@
-const { cmd, commands } = require("../command");
+const { cmd } = require("../command");
 const yts = require("yt-search");
-const { ytmp4 } = require("@vreden/youtube_scraper");
+const axios = require("axios");
 
 cmd(
   {
     pattern: "video",
     react: "🎥",
-    desc: "Download Song",
+    desc: "Download YouTube Video",
     category: "download",
     filename: __filename,
   },
@@ -14,101 +14,81 @@ cmd(
     robin,
     mek,
     m,
-    {
-      from,
-      quoted,
-      body,
-      isCmd,
-      command,
-      args,
-      q,
-      isGroup,
-      sender,
-      senderNumber,
-      botNumber2,
-      botNumber,
-      pushname,
-      isMe,
-      isOwner,
-      groupMetadata,
-      groupName,
-      participants,
-      groupAdmins,
-      isBotAdmins,
-      isAdmins,
-      reply,
-    }
+    { from, quoted, body, isCmd, command, args, q, isGroup, sender, reply }
   ) => {
     try {
-      if (!q) return reply("*නමක් හරි ලින්ක් එකක් හරි දෙන්න* 🌚❤️");
+      if (!q) return reply("*Provide a name or a YouTube link.* 🎥❤️");
 
       // Search for the video
       const search = await yts(q);
       const data = search.videos[0];
       const url = data.url;
 
-      // Song metadata description
-      let desc = `
-*❤️DARK-NOVA-XMD VEDIO DOWNLOADER❤️*
-
-👻 *title* : ${data.title}
-👻 *description* : ${data.description}
-👻 *time* : ${data.timestamp}
-👻 *ago* : ${data.ago}
-👻 *views* : ${data.views}
-👻 *url* : ${data.url}
+      // Video metadata description
+      let desc = 🎥 *DARK-NOVA-XMD VIDEO DOWNLOADER* 🎥
+      
+👻 *Title* : ${data.title}
+👻 *Duration* : ${data.timestamp}
+👻 *Views* : ${data.views}
+👻 *Uploaded* : ${data.ago}
+👻 *Channel* : ${data.author.name}
+👻 *Link* : ${data.url}
 
 ＭＡＤＥ ＢＹ ＡＬＰＨＡ Ｘ ＴＥＡＭ
-`;
+;
 
-      // Send metadata thumbnail message
+      // Send metadata and thumbnail message
       await robin.sendMessage(
         from,
         { image: { url: data.thumbnail }, caption: desc },
         { quoted: mek }
       );
 
-      // Download the audio using @vreden/youtube_scraper
-      const quality = "128"; // Default quality
-      const songData = await ytmp4(url, quality);
+      // Video download function
+      const downloadVideo = async (url, quality) => {
+        const apiUrl = 'https://p.oceansaver.in/ajax/download.php?format=${quality}&url=${encodeURIComponent(
+          url
+        )}&api=dfcb6d76f2f6a9894gjkege8a4ab232222';
+        const response = await axios.get(apiUrl);
 
-      // Validate song duration (limit: 30 minutes)
-      let durationParts = data.timestamp.split(":").map(Number);
-      let totalSeconds =
-        durationParts.length === 3
-          ? durationParts[0] * 3600 + durationParts[1] * 60 + durationParts[2]
-          : durationParts[0] * 60 + durationParts[1];
+        if (response.data && response.data.success) {
+          const { id, title } = response.data;
 
-      if (totalSeconds > 1800) {
-        return reply("⏱️ audio limit is 30 minitues");
-      }
+          // Wait for download URL generation
+          const progressUrl = 'https://p.oceansaver.in/ajax/progress.php?id=${id}';
+          while (true) {
+            const progress = await axios.get(progressUrl);
+            if (progress.data.success && progress.data.progress === 1000) {
+              const videoBuffer = await axios.get(progress.data.download_url, {
+                responseType: "arraybuffer",
+              });
+              return { buffer: videoBuffer.data, title };
+            }
+            await new Promise((resolve) => setTimeout(resolve, 5000));
+          }
+        } else {
+          throw new Error("Failed to fetch video details.");
+        }
+      };
 
-      // Send audio file
+      // Specify desired quality (default: 720p)
+      const quality = "720";
+
+      // Download and send video
+      const video = await downloadVideo(url, quality);
       await robin.sendMessage(
         from,
         {
-          audio: { url: songData.download.url },
-          mimetype: "video/mp4",
+          video: video.buffer,
+          caption: '🎥 *${video.title}*\n\nＭＡＤＥ ＢＹ ＡＬＰＨＡ Ｘ ＴＥＡＭ',
         },
         { quoted: mek }
       );
 
-      // Send as a document (optional)
-      await robin.sendMessage(
-        from,
-        {
-          document: { url: songData.download.url },
-          mimetype: "video/mp4",
-          fileName: `${data.title}.mp4`,
-          caption: "ＭＡＤＥ ＢＹ ＡＬＰＨＡ Ｘ ＴＥＡＭ",
-        },
-        { quoted: mek }
-      );
-
-      return reply("*Thanks for using DARK-NOVA-XMD* 🌚❤️");
+      reply("*Thanks for using DARK-NOVA-XMD* 🎥❤️");
     } catch (e) {
-      console.log(e);
-      reply(`❌ Error: ${e.message}`);
+      console.error(e);
+      reply('❌ Error: ${e.message}');
     }
   }
 );
