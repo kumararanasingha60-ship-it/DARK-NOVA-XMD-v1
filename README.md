@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-  <img src="https://github.com/dula9x/DARK-NOVA-XMD-V.1/blob/main/images/%E1%B4%85%E1%B4%80%CA%80%E1%B4%8B%20%C9%B4%E1%B4%8F%E1%B4%A0%E1%B4%80%20x%E1%B4%8D%E1%B4%85.png?raw=true" style="border-radius: 50px; box-shadow: 0 0 20px #00ffe5, 0 0 30px #00ffe5, 0 0 40px #00ffe5;">
+  <img src="https://github.com/dula9x/DARK-NOVA-XMD-V1-WEB-PAIR/blob/main/images/WhatsApp%20Image%202025-08-15%20at%2017.22.03_c520eb7b.jpg?raw=true" style="border-radius: 50px; box-shadow: 0 0 20px #00ffe5, 0 0 30px #00ffe5, 0 0 40px #00ffe5;">
 </p> 
 
 <p align="center">
@@ -31,7 +31,7 @@
 
 # GET SESSON ID 
 
-https://replit.com/@dulinanethmira6/DARK-NOVA-XMD-V1-WEB-PAIR-1
+https://replit.com/@dulinanethmira6/DARK-NOVA-XMD-V1-WEB-PAIR
 
 GET SESSON ID AND GOTO CONFIG PASTE YOUR SESSON ID AND SAVE
 
