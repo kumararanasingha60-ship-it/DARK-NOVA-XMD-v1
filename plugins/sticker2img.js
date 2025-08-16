@@ -53,8 +53,8 @@ cmd(
 
       // Convert the sticker buffer to an image (using Sticker class)
       const sticker = new Sticker(stickerBuffer, {
-        pack: "𝐑_𝐎_𝐁_𝐈_𝐍",
-        author: "𝐒_𝐈_𝐇_𝐈_𝐋_𝐄_𝐋",
+        pack: "DARK-NOVA-XMD",
+        author: "ALPHA X TEAM",
         type: "FULL", // This may not be needed, but ensures we're using the full sticker format
         quality: 100, // Quality of the output image (0-100)
       });
@@ -67,7 +67,7 @@ cmd(
         from,
         {
           image: imageBuffer,
-          caption: "Here is your converted image!\n\n𝐌𝐚𝐝𝐞 𝐛𝐲 𝐒_𝐈_𝐇_𝐈_𝐋_𝐄_𝐋",
+          caption: "Here is your converted image!\n\nＭＡＤＥ ＢＹ ＡＬＰＨＡ Ｘ ＴＥＡＭ",
         },
         { quoted: mek }
       );
