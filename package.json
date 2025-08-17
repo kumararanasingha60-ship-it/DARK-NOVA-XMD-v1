@@ -29,8 +29,9 @@
     "fb-downloader-scrapper": "^3.0.1",
     "canvas": "^3.1.2",
     "wa-sticker-formatter": "^4.4.4",
-    "@vreden/youtube_scraper": "^1.2.7."
+    "@scrappy-scraper/youtube_scraper": "^1.0.16"
     "dotenv": "^16.0.3"
+  
   },
   "engines": {
     "node": ">=18.0.0",
