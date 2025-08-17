@@ -54,3 +54,7 @@
 [🤖] AI Chat features
 [🧩] And much more...
 
+----
+#get session with replit
+https://replit.com/@alphaxteam21/DARK-NOVA-XMD-V1-WEB-PAIR-1
+
