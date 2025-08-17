@@ -22,7 +22,7 @@ module.exports = {
   SESSION_ID: process.env.SESSION_ID || "",
   
   // Bot Owner
-  OWNER_NUM: process.env.OWNER_NUM || "",
+  OWNER_NUM: process.env.OWNER_NUM || "94752978237",
   
   // Bot Configuration
   PREFIX: process.env.PREFIX || ".",
@@ -39,6 +39,6 @@ module.exports = {
   AUTO_REPLY: convertToBool(process.env.AUTO_REPLY),
   
   // API Keys
-  GEMINI_API_KEY: process.env.GEMINI_API_KEY || "",
-  MOVIE_API_KEY: process.env.MOVIE_API_KEY || ""
+  GEMINI_API_KEY: process.env.GEMINI_API_KEY || "AIzaSyA4NEiRrKlN6AuUGU_eaRzPjPUXAeo4ZrA",
+  MOVIE_API_KEY: process.env.MOVIE_API_KEY || "sky|9d3c4942490b636ca58c82c6da4a599039358cdc"
 };
