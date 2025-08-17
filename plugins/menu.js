@@ -69,6 +69,7 @@ cmd(
     ▫️.song <text>
     ▫️.video <text>
     ▫️.fb <link>
+    ▫️.movie <link>
 | *GROUP COMMANDS* |
 ${menu.group}
 | *OWNER COMMANDS* |
